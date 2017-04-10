@@ -1,4 +1,4 @@
---Ò»¸ö¼òµ¥ÊµÏÖ½×³ËµÄ·½·¨
+--ä¸€ä¸ªç®€å•å®ç°é˜¶ä¹˜çš„æ–¹æ³•
 --[[function fact (n) 
    if n == 0 then
       return 1
@@ -6,12 +6,11 @@
       return n * fact(n - 1)
    end 
 end 
-
 print("enter a number:")
 a = io.read("*number")
 print(fact(a))--]]
 
---Í¨¹ıtypeÀ´ÅĞ¶ÏÊı¾İÀàĞÍ
+--é€šè¿‡typeæ¥åˆ¤æ–­æ•°æ®ç±»å‹
 --[[
 print(type("hello world"))
 print(type(10.84))
@@ -21,32 +20,32 @@ print(type(true))
 print(type(nil))
 print(type(type(X)))--]]  
 
---Ê¹ÓÃ#À´¼ÆËã×Ö·û´®³¤¶È
+--ä½¿ç”¨#æ¥è®¡ç®—å­—ç¬¦ä¸²é•¿åº¦
 --len = "boyaa"
 --print(#len)
 
---tableµÄÊ¹ÓÃ
---³õÊ¼»¯¿Õtable
+--tableçš„ä½¿ç”¨
+--åˆå§‹åŒ–ç©ºtable
 --local table1 = {}
---Ö±½Ó³õÊ¼»¯Ò»¸ötable
+--ç›´æ¥åˆå§‹åŒ–ä¸€ä¸ªtable
 --local table = {"apple", "pear", "orange"}
---»ù±¾tableÖ´ĞĞ´úÂë
+--åŸºæœ¬tableæ‰§è¡Œä»£ç 
 --[[local table = {"apple", "pear", "orange"}
 for key, val in pairs(table) do
     print("key", key, "value", val)
 end  --]]
 
---¶à¸ö±äÁ¿µÄ¸³Öµ
+--å¤šä¸ªå˜é‡çš„èµ‹å€¼
 --a,b = 10, 2 * x
 
---forÑ­»·µÄÊ¹ÓÃ
+--forå¾ªç¯çš„ä½¿ç”¨
 --[[
 for i = 1, 10, 2 do 
   print(i)
 end
 --]]
 
---if...then...elseÓï¾ä£¬ÕâÀïÊµÏÖÇ¶Ì×
+--if...then...elseè¯­å¥ï¼Œè¿™é‡Œå®ç°åµŒå¥—
 --[[
 a = 10
 b = 18
@@ -54,17 +53,16 @@ if (a > 9)
 then 
  if (b == 18) 
  then 
-    print("aµÄÖµÎª"£¬a, "bµÄÖµÎª"£¬b)
+    print("açš„å€¼ä¸º"ï¼Œa, "bçš„å€¼ä¸º"ï¼Œb)
  end
 end
 --]] 
 
---ÊµÏÖº¯Êı×÷Îª²ÎÊı´«µİ¸øÁíÒ»¸öº¯Êı
+--å®ç°å‡½æ•°ä½œä¸ºå‚æ•°ä¼ é€’ç»™å¦ä¸€ä¸ªå‡½æ•°
 --[[
 myPrint = function(param)
-   print("ÕâÊÇ´òÓ¡º¯Êı- ", param)
+   print("è¿™æ˜¯æ‰“å°å‡½æ•°- ", param)
 end
-
 function add(num1, num2, functionPrint)
    result = num1 + num2
    functionPrint(result)
@@ -73,10 +71,10 @@ myPrint(10)
 add(2, 5, myPrint)
 --]]
 
---ÊµÏÖº¯Êı·µ»Ø¶à¸ö·µ»ØÖµ
+--å®ç°å‡½æ•°è¿”å›å¤šä¸ªè¿”å›å€¼
 --[[
 function maxNumAndIndex(table)
-  local index = 1  --¼Ç×¡tableµÄË÷ÒıÖµ´Ó1¿ªÊ¼
+  local index = 1  --è®°ä½tableçš„ç´¢å¼•å€¼ä»1å¼€å§‹
   local max = table[index]
   for i, val in ipairs(table) do
      if val > max then
@@ -86,11 +84,10 @@ function maxNumAndIndex(table)
   end
   return max, index
 end
-
 print(maxNumAndIndex({88, 1, 22, 12, 99, 5, 66, 42}))
 --]]
 
---ÊµÏÖº¯Êı½ÓÊÜ¿É±äÊıÄ¿µÄ²ÎÊı
+--å®ç°å‡½æ•°æ¥å—å¯å˜æ•°ç›®çš„å‚æ•°
 --[[
 function average(...)
   result = 0
@@ -98,30 +95,28 @@ function average(...)
   for i, val in ipairs(arg) do
     result = result + val
   end
-  print("×Ü¹²´«Èë" ..#arg.. "¸öÊı")
+  print("æ€»å…±ä¼ å…¥" ..#arg.. "ä¸ªæ•°")
   return result/#arg
 end
-
-print("Æ½¾ùÖµÎª", average(10, 5, 2, 6, 8, 7, 3))
+print("å¹³å‡å€¼ä¸º", average(10, 5, 2, 6, 8, 7, 3))
 --]]
 
---µü´úÆ÷ÀïÃæpairsºÍipairsµÄÇø±ğ£º
+--è¿­ä»£å™¨é‡Œé¢pairså’Œipairsçš„åŒºåˆ«ï¼š
 --[[
 local tab= { 
 [1] = "a", 
 [3] = "b", 
 [4] = "c" 
 } 
-for i,v in pairs(tab) do        -- Êä³ö "a" ,"b", "c"  ,
-    print( "pairsµÄ·½Ê½Êä³ö", tab[i] ) 
+for i,v in pairs(tab) do        -- è¾“å‡º "a" ,"b", "c"  ,
+    print( "pairsçš„æ–¹å¼è¾“å‡º", tab[i] ) 
 end 
-
-for i,v in ipairs(tab) do    -- Êä³ö "a" ,k=2Ê±¶Ï¿ª 
-    print( "ipairsµÄ·½Ê½Êä³ö", tab[i] ) 
+for i,v in ipairs(tab) do    -- è¾“å‡º "a" ,k=2æ—¶æ–­å¼€ 
+    print( "ipairsçš„æ–¹å¼è¾“å‡º", tab[i] ) 
 end
 --]]
 
---ÎŞ×´Ì¬µü´úÆ÷µÄÊµÏÖ£º¼òµ¥µÄ×´Ì¬³£Á¿ºÍ¿ØÖÆ±äÁ¿
+--æ— çŠ¶æ€è¿­ä»£å™¨çš„å®ç°ï¼šç®€å•çš„çŠ¶æ€å¸¸é‡å’Œæ§åˆ¶å˜é‡
 --[[
 function square(endNum, beginNum)
   if beginNum < endNum
@@ -130,29 +125,39 @@ function square(endNum, beginNum)
   return beginNum, beginNum * beginNum
   end
 end
-
 for i, val in square, 9, 0 do
   print(i, val)
 end
 --]]
 
---tableµÄÁ¬½Ó
+--tableçš„è¿æ¥
 local table = {"lua", "java", "android", "C"}
-print("Á¬½ÓºóµÄ×Ö·û´®: ", table.concat(table))
-print("Á¬½ÓºóµÄ×Ö·û´®: ", table.concat(table, ", "))
-print("Á¬½ÓºóµÄ×Ö·û´®: ", table.concat(table, ", ", 2, 4))
+print("è¿æ¥åçš„å­—ç¬¦ä¸²: ", table.concat(table))
+print("è¿æ¥åçš„å­—ç¬¦ä¸²: ", table.concat(table, ", "))
+print("è¿æ¥åçš„å­—ç¬¦ä¸²: ", table.concat(table, ", ", 2, 4))
 
---table²åÈëºÍÒÆ³ı
+--tableæ’å…¥å’Œç§»é™¤
 local fruits = {"banana","orange","apple"}
 
 table.insert(fruits,"mango")
-print("Ë÷ÒıÎª 4 µÄÔªËØÎª ",fruits[4])
+print("ç´¢å¼•ä¸º 4 çš„å…ƒç´ ä¸º ",fruits[4])
 
 table.insert(fruits,2,"grapes")
-print("Ë÷ÒıÎª 2 µÄÔªËØÎª ",fruits[2])
+print("ç´¢å¼•ä¸º 2 çš„å…ƒç´ ä¸º ",fruits[2])
 
-print("×îºóÒ»¸öÔªËØÎª ",fruits[5])
+print("æœ€åä¸€ä¸ªå…ƒç´ ä¸º ",fruits[5])
 table.remove(fruits)
-print("ÒÆ³ıºó×îºóÒ»¸öÔªËØÎª ",fruits[5])
+print("ç§»é™¤åæœ€åä¸€ä¸ªå…ƒç´ ä¸º ",fruits[5])
 
---tableÅÅĞò
+--tableæ’åº
+local language = {"java","lua","C","ruby"}
+print("æ’åºå‰")
+for k,v in ipairs(language) do
+	print(k,v)
+end
+
+table.sort(language)
+print("æ’åºå")
+for k,v in ipairs(language) do
+	print(k,v)
+end
