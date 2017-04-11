@@ -130,11 +130,13 @@ for i, val in square, 9, 0 do
 end
 --]]
 
+
 --table的连接
-local table = {"lua", "java", "android", "C"}
-print("连接后的字符串: ", table.concat(table))
-print("连接后的字符串: ", table.concat(table, ", "))
-print("连接后的字符串: ", table.concat(table, ", ", 2, 4))
+--[[
+local language = {"lua", "java", "android", "C"}
+print("连接后的字符串: ",table.concat(language))
+print("连接后的字符串: ",table.concat(language, ", "))
+print("连接后的字符串: ",table.concat(language, ", ", 2, 4))
 
 --table插入和移除
 local fruits = {"banana","orange","apple"}
@@ -161,3 +163,55 @@ print("排序后")
 for k,v in ipairs(language) do
 	print(k,v)
 end
+--]]
+
+--lua的面向对象实现例子
+Shape = {area = 0} --相当于类的属性
+function Shape:new(o, side)
+  o = o or {}
+  setmetatable(o, self)
+  self.__index  = self
+  side = side or 0
+  self.area = side * side
+  return o
+end
+
+function Shape:printArea()  --相当于类的成员方法
+  print("Area is ", self.area)
+end
+
+--创建一个对象
+myshape = Shape:new(nil, 10)
+myshape:printArea()
+
+--实现继承
+Square = Shape:new()
+function Square:new(o, side)
+  o = o or Shape:new(o, side)
+  setmetatable(o, self)
+  self.__index = self
+  return o
+end
+
+function Square:print()
+  print("Suqre Area is", self.area)
+end
+
+mysquare = Square:new(nil, 10)
+mysquare:printArea()
+
+Rectangle = Shape:new()
+function Rectangle:new(o, length, breadth)
+  o = o or Shape:new(o)
+  setmetatable(o, self)
+  self.__index = self
+  self.area = length * breadth
+  return o
+end
+
+function Rectangle:printArea()
+  print("Rectangle Area is ", self.area)
+end
+
+myrectangele = Rectangle:new(nil, 10, 20)
+myrectangele:printArea()
