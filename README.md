@@ -1,4 +1,4 @@
-# 一步步学习lua
+﻿# 一步步学习lua
 
 ## 环境安装
 一般下载luaforwindow便可以实现集成好的编译环境，但是我在下载安装过程中出现问题，始终显示安装错误所以选择了另一种方式。
@@ -36,6 +36,7 @@
 2. 计算并返回值，这种情况下函数作为赋值语句的表达式使用
 ### 注意要点
 1. 函数是可以作为参数传递给另一个函数的
+
 ```
 myPrint = function(param)
    print("这是打印函数- ", param)
@@ -50,6 +51,7 @@ add(2, 5, myPrint)
 ```
 
 2. 函数是可以存在多个返回值的，只要return多个值，期间值与值之间用逗号隔开
+
 ```
 function maxNumAndIndex(table)
   local index = 1  --记住table的索引值从1开始
@@ -67,6 +69,7 @@ print(maxNumAndIndex({88, 1, 22, 12, 99, 5, 66, 42}))
 ```
 
 3. 函数是可以接受可变数目的参数的
+
 ```
 function average(...)
   result = 0
@@ -185,6 +188,7 @@ lua table使用的是关联型数组，可以用任意类型的值来作为数�
 
 ### lua的错误处理
 1. assert:
+
 ```
 local function add(a,b)
    assert(type(a) == "number", "a 不是一个数字")
@@ -193,10 +197,14 @@ local function add(a,b)
 end
 add(10)
 ```
+
 2. error(message, [, level]): 终止正在执行的函数，并返回message的内容作为错误信息(error函数永远都不会返回)
 3. pcall: 捕获函数执行中的任何错误
+
 `pcall(function(i) print(i) end, 33)`
-4. xpcall: 接收第二个参数，一个错误处理的函数。当错误发生时，lua会在调用栈展开前调用错误处理函数，显示错误额外信息·
+
+4. xpcall: 接收第二个参数，一个错误处理的函数。当错误发生时，lua会在调用栈展开前调用错误处理函数，显示错误额外信息
+
 ```
 function myfunction ()
    n = n/nil
@@ -209,9 +217,10 @@ end
 status = xpcall( myfunction, myerrorhandler )
 print( status)
 ```
+
 ## lua调试
 | 序号 | 方法 | 用途 |
-|----|------|------------|
+|------|------|------------|
 | 1 | debug() | 进入一个用户交互模式，运行用户输入的每个字符串。 使用简单的命令以及其它调试设置，用户可以检阅全局变量和局部变量， 改变变量的值，计算一些表达式，等等。输入一行仅包含 cont 的字符串将结束这个函数， 这样调用者就可以继续向下运行 |
 | 2 | getfenv(object) | 返回对象的环境变量 |
 | 3 | gethook(optional thread) | 返回三个表示线程钩子设置的值： 当前钩子函数，当前钩子掩码，当前钩子计数 |
@@ -230,7 +239,7 @@ print( status)
 
 
 | 序号 | 方法 | 描述 |
-|---|-------|----------|
+|------|-------|----------|
 | 1 | collectgarbage("collect") | 做一次完整的垃圾收集循环 |
 | 2 | collectgarbage("count") | 以 K 字节数为单位返回 Lua 使用的总内存数。 这个值有小数部分，所以只需要乘上 1024 就能得到 Lua 使用的准确字节数 |
 | 3 | collectgarbage("restart") | 重启垃圾收集器的自动运行 |
@@ -238,3 +247,9 @@ print( status)
 | 5 | collectgarbage("setstepmul") | 返回 步进倍率 的前一个值 |
 | 6 | collectgarbage("step") | 单步运行垃圾收集器。 步长"大小"由 arg 控制。 传入 0 时，收集器步进（不可分割的）一步。 传入非 0 值， 收集器收集相当于 Lua 分配这些多（K 字节）内存的工作。 如果收集器结束一个循环将返回 true |
 | 7 |  collectgarbage("stop") | 停止垃圾收集器的运行。 在调用重启前，收集器只会因显式的调用运行 |
+
+## 面对对象的实现（重点）
+   lua作为一种脚本语言，其本身并不具备常规面对对象语言类的定义，不过这里可以通过模拟的方式实现面对对象的编程方法。lua中最基本的结构是table,所以可以用table描述对象的属性。function描述的是方法。
+因此可以通过table+function的方式模拟出类来。
+   至于面向对象这块细节比较多，会以一个模块的方式单独拿出来细分析。详细可转往下面的文档地址。
+   
